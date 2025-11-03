@@ -1,0 +1,62 @@
+/* AdminPathConfig.css */
+.admin-path-config {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-path-config h2 {
+  color: #020B43;
+  margin-bottom: 20px;
+}
+
+.path-config-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.path-config-table th,
+.path-config-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #525355;
+}
+
+.path-config-table th {
+  background-color: #C3DEFA;
+  color: #020B43;
+  font-weight: bold;
+}
+
+.path-config-table td {
+  color: #525355;
+}
+
+.path-config-table tr:hover {
+  background-color: #CDF4BF;
+}
+
+.call-api-btn {
+  background-color: #38D200;
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.call-api-btn:hover {
+  background-color: #0473EA;
+}
+
+.alert {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  color: #FFFFFF;
+  background-color: #38D200;
+}

@@ -1,0 +1,83 @@
+/* === Container & Header === */
+.subscribe-container {
+  background: linear-gradient(180deg, #e3f2fd 0%, #e8f5e9 100%);
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+.subscribe-title {
+  font-weight: 700;
+  color: #1976d2;
+  letter-spacing: 0.5px;
+}
+
+.subscribe-subtitle {
+  color: #388e3c;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* === Search Box === */
+.subscribe-search-box input {
+  box-shadow: none !important;
+}
+
+.subscribe-search-box .form-control:focus {
+  border-color: #43a047;
+  box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+}
+
+/* === Group Cards === */
+.subscribe-group-card {
+  border: none;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.subscribe-group-card:hover {
+  transform: translateY(-6px);
+  background: #f9fcfb;
+  box-shadow: 0 6px 18px rgba(76, 175, 80, 0.25);
+}
+
+.subscribe-group-title {
+  color: #1565c0;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.subscribe-group-description {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+  min-height: 48px;
+}
+
+/* === Subscribe Button (Solid Color) === */
+.subscribe-btn {
+  background-color: #1976d2; /* solid blue */
+  border: none;
+  font-weight: 600;
+  color: white;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  padding: 0.55rem 0;
+}
+
+.subscribe-btn:hover {
+  background-color: #43a047; /* solid green on hover */
+  transform: scale(1.03);
+  color: white;
+}
+
+/* === Info Card === */
+.card.bg-light {
+  border-left: 4px solid #2196f3;
+}
+
+ul li {
+  line-height: 1.6;
+}

@@ -1,0 +1,54 @@
+/* Statistics Card Icon Styling */
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* Search Box Container */
+.search-box {
+  flex: 2;
+  min-width: 300px;
+  position: relative;
+}
+
+/* Search Icon Positioning */
+.search-box i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+/* Search Input with Left Padding for Icon */
+.search-box input {
+  padding-left: 40px;
+}
+
+/* Bank ID Badge Styling */
+.bank-id-badge {
+  background: #2c3a87;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Grant Access Button */
+.btn-grant-access {
+  background: #38d200;
+  color: white;
+  border: none;
+}
+
+/* Grant Access Button Hover Effect */
+.btn-grant-access:hover {
+  background: #2fb800;
+}

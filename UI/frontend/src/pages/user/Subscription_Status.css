@@ -1,0 +1,152 @@
+.subscription-status-container {
+  padding: 2rem;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.subscription-status-header {
+  margin-bottom: 1.5rem;
+}
+
+.subscription-status-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #004aad;
+  margin-bottom: 0.25rem;
+}
+
+.subscription-status-subtitle {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+/* Summary Cards */
+.summary-item {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.summary-item:hover {
+  background: #f1f8ff;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.summary-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Filter Buttons */
+.filter-section {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.filter-title {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.filter-buttons-container {
+  text-align: left;
+}
+
+.filter-btn {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  border: 1px solid;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect - no gradient */
+.filter-btn:hover {
+  transform: translateY(-2px);
+  background-color: #f8f9fa;
+}
+
+/* Filter button states */
+.filter-all {
+  color: #1976d2;
+  border-color: #2196f3;
+}
+.filter-all.active {
+  background: #2196f3;
+  color: white;
+}
+
+.filter-pending {
+  color: #f57c00;
+  border-color: #ffb300;
+}
+.filter-pending.active {
+  background: #ffb300;
+  color: white;
+}
+
+.filter-approved {
+  color: #2e7d32;
+  border-color: #4caf50;
+}
+.filter-approved.active {
+  background: #4caf50;
+  color: white;
+}
+
+.filter-rejected {
+  color: #c62828;
+  border-color: #ef5350;
+}
+.filter-rejected.active {
+  background: #ef5350;
+  color: white;
+}
+
+/* Table */
+.table-wrapper {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-dark {
+  background-color: rgb(45, 132, 45) !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f8f4 !important;
+}
+
+@media (max-width: 768px) {
+  .subscription-status-container {
+    padding: 1rem;
+  }
+
+  .summary-item {
+    margin-bottom: 1rem;
+  }
+
+  .filter-buttons-container {
+    text-align: center;
+  }
+}

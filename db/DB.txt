@@ -1,0 +1,167 @@
+# Database Schema and Queries for Wealth Core Reports Portal
+
+## Tables
+
+### 1. users
+- id: BIGINT PRIMARY KEY AUTO_INCREMENT
+- username: VARCHAR(255) UNIQUE NOT NULL
+- password: VARCHAR(255) NOT NULL
+- email: VARCHAR(255) UNIQUE NOT NULL
+- role: VARCHAR(50) NOT NULL (e.g., 'ADMIN', 'OPS', 'USER')
+- active: BOOLEAN DEFAULT TRUE
+- created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+### 2. reports
+- id: BIGINT PRIMARY KEY AUTO_INCREMENT
+- name: VARCHAR(255) NOT NULL
+- description: TEXT
+- file_path: VARCHAR(500)
+- file_type: VARCHAR(10) (e.g., 'PDF', 'TXT')
+- created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+### 3. bookmarks
+- id: BIGINT PRIMARY KEY AUTO_INCREMENT
+- user_id: BIGINT NOT NULL
+- report_id: BIGINT NOT NULL
+- created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- FOREIGN KEY (user_id) REFERENCES users(id)
+- FOREIGN KEY (report_id) REFERENCES reports(id)
+- UNIQUE KEY (user_id, report_id)
+
+### 4. notifications
+- id: BIGINT PRIMARY KEY AUTO_INCREMENT
+- user_id: BIGINT NOT NULL
+- message: TEXT NOT NULL
+- is_read: BOOLEAN DEFAULT FALSE
+- created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- FOREIGN KEY (user_id) REFERENCES users(id)
+
+### 5. transfer_logs
+- id: BIGINT PRIMARY KEY AUTO_INCREMENT
+- unique_id: VARCHAR(255) UNIQUE NOT NULL
+- action: VARCHAR(50) NOT NULL (e.g., 'New', 'Delete')
+- input_file_name: VARCHAR(255) NOT NULL
+- file_type: VARCHAR(10) NOT NULL
+- output_folder_path: VARCHAR(500) NOT NULL
+- status: VARCHAR(50) DEFAULT 'PENDING' (e.g., 'PENDING', 'COMPLETED', 'FAILED')
+- error_message: TEXT
+- created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- processed_at: TIMESTAMP NULL
+
+### 6. path_configs
+- id: BIGINT PRIMARY KEY AUTO_INCREMENT
+- report_name: VARCHAR(255) NOT NULL
+- source_path: VARCHAR(500) NOT NULL
+- output_path: VARCHAR(500) NOT NULL
+- created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+### 7. access_requests
+- id: BIGINT PRIMARY KEY AUTO_INCREMENT
+- user_id: BIGINT NOT NULL
+- ad_group_name: VARCHAR(255) NOT NULL
+- folder: VARCHAR(255) NOT NULL
+- report_name: VARCHAR(255) NOT NULL
+- status: VARCHAR(50) DEFAULT 'PENDING' (e.g., 'PENDING', 'APPROVED', 'REJECTED')
+- created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+- FOREIGN KEY (user_id) REFERENCES users(id)
+
+## Queries to Create Tables
+
+```sql
+CREATE TABLE users (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE reports (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    file_path VARCHAR(500),
+    file_type VARCHAR(10),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE bookmarks (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    report_id BIGINT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (report_id) REFERENCES reports(id),
+    UNIQUE KEY (user_id, report_id)
+);
+
+CREATE TABLE notifications (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    message TEXT NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE transfer_logs (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    unique_id VARCHAR(255) UNIQUE NOT NULL,
+    action VARCHAR(50) NOT NULL,
+    input_file_name VARCHAR(255) NOT NULL,
+    file_type VARCHAR(10) NOT NULL,
+    output_folder_path VARCHAR(500) NOT NULL,
+    status VARCHAR(50) DEFAULT 'PENDING',
+    error_message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    processed_at TIMESTAMP NULL
+);
+
+CREATE TABLE path_configs (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    report_name VARCHAR(255) NOT NULL,
+    source_path VARCHAR(500) NOT NULL,
+    output_path VARCHAR(500) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE access_requests (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    ad_group_name VARCHAR(255) NOT NULL,
+    folder VARCHAR(255) NOT NULL,
+    report_name VARCHAR(255) NOT NULL,
+    status VARCHAR(50) DEFAULT 'PENDING',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+```
+
+## Sample Data Inserts
+
+```sql
+-- Insert sample users
+INSERT INTO users (username, password, email, role) VALUES
+('admin', '$2a$10$examplehashedpassword', 'admin@example.com', 'ADMIN'),
+('ops', '$2a$10$examplehashedpassword', 'ops@example.com', 'OPS'),
+('user1', '$2a$10$examplehashedpassword', 'user1@example.com', 'USER');
+
+-- Insert sample reports
+INSERT INTO reports (name, description, file_path, file_type) VALUES
+('KYC Report', 'Know Your Customer Report', '/reports/kyc.pdf', 'PDF'),
+('AML Report', 'Anti-Money Laundering Report', '/reports/aml.pdf', 'PDF'),
+('Dormant Report', 'Dormant Accounts Report', '/reports/dormant.pdf', 'PDF');
+
+-- Insert sample path configs
+INSERT INTO path_configs (report_name, source_path, output_path) VALUES
+('KYC Report', '/source/kyc', '/output/compliance'),
+('AML Report', '/source/aml', '/output/compliance'),
+('Dormant Report', '/source/dormant', '/output/compliance');
