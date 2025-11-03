@@ -24,6 +24,8 @@
 - [x] Fix compilation errors (UserService.java - added SubscriptionRequestRepository dependency)
 - [x] Fix database schema issues (added schema.sql, updated application.properties)
 - [x] Backend application starts successfully on port 8081
+- [x] Fix admin user management - added GET /api/users endpoint and User model getters for frontend compatibility
+- [x] Backend compiles successfully after fixes
 - [ ] Test all new endpoints with Postman or similar
 - [ ] Test frontend-backend integration
 - [ ] Verify access control (JWT, roles)

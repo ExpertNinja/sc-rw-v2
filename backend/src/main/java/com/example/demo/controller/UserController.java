@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.ReportDTO;
 import com.example.demo.model.Group;
+import com.example.demo.model.User;
 import com.example.demo.service.ReportService;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,10 @@ public class UserController {
     @GetMapping("/available-groups")
     public List<Group> getAvailableGroups(@RequestParam String email) {
         return userService.getAvailableGroupsByEmail(email);
+    }
+
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 }

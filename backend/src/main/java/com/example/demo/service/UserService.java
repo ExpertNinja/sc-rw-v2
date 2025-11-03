@@ -60,4 +60,8 @@ public class UserService {
         java.time.LocalDateTime endOfDay = startOfDay.plusDays(1);
         return subscriptionRequestRepository.countByStatusAndApprovedAtBetween("approved", startOfDay, endOfDay);
     }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }

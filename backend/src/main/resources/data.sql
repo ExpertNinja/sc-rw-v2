@@ -1,8 +1,8 @@
 -- Insert sample users
-INSERT INTO users (username, password, email, role_id, is_active) VALUES
-('admin', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@sc.com', 1, true),
-('ops', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'operations@sc.com', 2, true),
-('user1', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user@sc.com', 3, true);
+INSERT INTO users (username, password, email, role_id, is_active, created_at, updated_at) VALUES
+('admin', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@sc.com', 1, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('ops', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'operations@sc.com', 2, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('user1', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user@sc.com', 3, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- Insert sample path configs
 INSERT INTO path_configs (unique_id, action, input_file_name, file_type, output_folder_path, description) VALUES

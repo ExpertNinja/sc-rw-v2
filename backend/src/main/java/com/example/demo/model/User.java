@@ -57,4 +57,9 @@ public class User {
 
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+
+    // Additional getters for frontend compatibility
+    public String getBankId() { return String.valueOf(id); }
+    public String getStatus() { return isActive ? "Active" : "Inactive"; }
+    public String[] getAdGroups() { return new String[]{"Wealth Compliance", "Wealth User Admin"}; } // Mock AD groups
 }
